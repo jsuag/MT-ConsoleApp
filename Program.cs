@@ -53,7 +53,7 @@ class JobMessageConsumerDefinition : ConsumerDefinition<JobMessageConsumer>
         //endpointConfigurator.ClearSerialization();
 
         endpointConfigurator.DefaultContentType = new System.Net.Mime.ContentType("application/json");
-        endpointConfigurator.UseRawJsonSerializer(MassTransit.Serialization.RawSerializerOptions.AddTransportHeaders | MassTransit.Serialization.RawSerializerOptions.CopyHeaders);
+        endpointConfigurator.UseRawJsonSerializer();
 
         //This config is just to see the skipped message
         endpointConfigurator.ConfigureDeadLetter(x => x.UseFilter(new JobMessageFilter()));
