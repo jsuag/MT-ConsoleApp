@@ -18,10 +18,10 @@ using IHost host = Host.CreateDefaultBuilder(args)
 
             x.UsingAmazonSqs((context, cfg) =>
             {
-                cfg.Host("us-east-2", amazon =>
+                cfg.Host("region", amazon =>
                 {
-                    amazon.AccessKey("AKIA6E7GPHJ5ODQJXLV6");
-                    amazon.SecretKey("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");
+                    amazon.AccessKey("key");
+                    amazon.SecretKey("secret");
                 });
 
                 cfg.ConfigureEndpoints(context);
