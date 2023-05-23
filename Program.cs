@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using JobEntities;
 using MassTransit;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -17,10 +18,10 @@ using IHost host = Host.CreateDefaultBuilder(args)
 
             x.UsingAmazonSqs((context, cfg) =>
             {
-                cfg.Host("region", amazon =>
+                cfg.Host("us-east-2", amazon =>
                 {
-                    amazon.AccessKey("key");
-                    amazon.SecretKey("secret");
+                    amazon.AccessKey("AKIA6E7GPHJ5ODQJXLV6");
+                    amazon.SecretKey("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");
                 });
 
                 cfg.ConfigureEndpoints(context);
@@ -71,7 +72,10 @@ class JobMessageFilter : IFilter<ReceiveContext>
     public void Probe(ProbeContext context) { }
 }
 
-record JobMessage
+namespace JobEntities
 {
-    public int job_id { get; set; }
+    record JobMessage
+    {
+        public int job_id { get; set; }
+    }
 }
